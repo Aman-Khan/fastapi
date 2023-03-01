@@ -42,17 +42,26 @@ class userPost(BaseModel):
         orm_mode=True
 
 class resUserPost(BaseModel):
-    id:int
-    pid:int
+    id: int
+    pid: int
     context: str
     post: str
     created_at: datetime
-            
+
     class Config:
         orm_mode=True
 
-
 class tokenData(BaseModel):
     user_id: str
+    class Config:
+        orm_mode = True
+
+class updatePrivacy(BaseModel):
+    email: str
+    id: int
+    pwd: str
+    acs: bool
+    created_at: datetime
+    
     class Config:
         orm_mode = True
