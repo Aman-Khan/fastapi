@@ -27,7 +27,7 @@ class loginCred(BaseModel):
         orm_mode=True
 
 class resToken(BaseModel):
-    id: int
+    user_id: int
     token: str
         
     class Config:
@@ -41,8 +41,34 @@ class userPost(BaseModel):
     class Config:
         orm_mode=True
 
+class resUserPost(BaseModel):
+    id: int
+    pid: int
+    context: str
+    post: str
+    created_at: datetime
+
+    class Config:
+        orm_mode=True
 
 class tokenData(BaseModel):
-    id: str
+    user_id: str
     class Config:
         orm_mode = True
+
+class updatePrivacy(BaseModel):
+    email: str
+    id: int
+    pwd: str
+    acs: bool
+    created_at: datetime
+    
+    class Config:
+        orm_mode = True
+
+class postLike(BaseModel):
+    id: int
+    pid: int
+    
+    class Config:
+        orm_mode =  True
