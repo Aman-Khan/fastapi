@@ -65,3 +65,10 @@ class updatePrivacy(BaseModel):
     
     class Config:
         orm_mode = True
+
+class postLike(BaseModel):
+    id: int
+    pid: int
+    
+    class Config:
+        orm_mode =  True
