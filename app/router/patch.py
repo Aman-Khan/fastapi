@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, status, Depends
 from ..database import get_db, Session
-from .. import models, oauth2, schemas
-from sqlalchemy import update
+from .. import models, oauth2
 
 router = APIRouter(tags=['PATCH'])
 
