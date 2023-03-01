@@ -21,7 +21,6 @@ def login(info: schemas.loginCred ,db: Session = Depends(get_db)):
 @router.post('/post', response_model=schemas.resUserPost)
 def post(postInfo: schemas.userPost, db: Session=Depends(get_db), user: oauth2.get_current_user = Depends()):
     user_id  = user.dict().get('user_id')
-    print(user_id)
     get_user = db.query(models.userCred).filter(models.userCred.email==user_id).first()
     if get_user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Credentials")
@@ -31,4 +30,4 @@ def post(postInfo: schemas.userPost, db: Session=Depends(get_db), user: oauth2.g
         db.add(posted)
         db.commit()
         db.refresh(posted)
-    return (posted)
+        return (posted)
