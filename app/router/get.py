@@ -5,6 +5,10 @@ from .. import models, oauth2, schemas
 
 router = APIRouter(tags=['GET'])
 
+@router.get('/')
+def sayHello():
+    return {"message":"hello"}
+
 #get post by post id(pid)
 @router.get('/{pid}', response_model=schemas.resUserPost)
 def getPost(pid: int, db: Session=Depends(get_db), user: oauth2.get_current_user = Depends()):
@@ -33,3 +37,4 @@ def getAllPost(db: Session = Depends(get_db), user: oauth2.get_current_user = De
     else:
         posts = db.query(models.posts).filter(models.posts.id==get_user.id).all()
         return posts
+    
