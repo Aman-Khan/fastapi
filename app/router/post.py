@@ -31,3 +31,4 @@ def post(postInfo: schemas.userPost, db: Session=Depends(get_db), user: oauth2.g
         db.commit()
         db.refresh(posted)
         return (posted)
+    
